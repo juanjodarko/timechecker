@@ -1,0 +1,48 @@
+<div class="bg-gray-100 h-screen font-sans">
+  <div class="container mx-auto h-full flex justify-center items-center">
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <h1 class="mb-8 text-3xl text-center">Sign up</h1>
+        <div class="border-indigo-500 p-6 border-t-4 bg-white mb-6 rounded-lg shadow-lg">
+          <div class="mb-4">
+            <label class="font-bold text-gray-600 block mb-2">Account name</label>
+            <input type="text" class="block appearance-none w-full bg-white border border-gray-200 hover:border-gray-400 px-2 py-2 rounded shadow" placeholder="Account name" formControlName="name">
+          </div>
+          <div class="mb-4">
+            <label class="font-bold text-gray-600 block mb-2">Subdomain</label>
+            <input type="text" class="block appearance-none w-full bg-white border border-gray-200 hover:border-gray-400 px-2 py-2 rounded shadow" placeholder="Subdomain" formControlName="subdomain">
+          </div>
+
+          <div class="mb-4">
+            <label class="font-bold text-gray-600 block mb-2">Email</label>
+            <input type="text" class="block appearance-none w-full bg-white border border-gray-200 hover:border-gray-400 px-2 py-2 rounded shadow" placeholder="Your Email" formControlName="email">
+          </div>
+          <div class="mb-4">
+            <label class="font-bold text-gray-600 block mb-2">First name</label>
+            <input type="text" class="block appearance-none w-full bg-white border border-gray-200 hover:border-gray-400 px-2 py-2 rounded shadow" placeholder="Your name" formControlName="first_name">
+          </div>
+          <div class="mb-4">
+            <label class="font-bold text-gray-600 block mb-2">Last name</label>
+            <input type="text" class="block appearance-none w-full bg-white border border-gray-200 hover:border-gray-400 px-2 py-2 rounded shadow" placeholder="Your last name" formControlName="last_name">
+          </div>
+          <div class="mb-4">
+            <label class="font-bold text-gray-600 block mb-2">Password</label>
+            <input type="password" class="block appearance-none w-full bg-white border border-gray-200 hover:border-gray-400 px-2 py-2 rounded shadow" placeholder="Password" formControlName="password">
+          </div>
+          <div class="mb-4">
+            <label class="font-bold text-gray-600 block mb-2">Password confirmarion</label>
+            <input type="password" class="block appearance-none w-full bg-white border border-gray-200 hover:border-gray-400 px-2 py-2 rounded shadow" placeholder="Account name" formControlName="password_confirmation">
+          </div>
+          <div class="flex items-center justify-between">
+            <button class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">
+              Signup
+            </button>
+          </div>
+        </div>
+        <div class="text-center">
+                <p class="text-grey-dark text-sm">Already have an account? <a routerLink="/login" class="no-underline text-blue font-bold">Log-in</a>.</p>
+        </div>
+    </form>
+  </div>
+</div>
+
+

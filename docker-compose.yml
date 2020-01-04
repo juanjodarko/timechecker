@@ -1,0 +1,38 @@
+version: '3.6'
+
+services:
+  api:
+    build:
+      context: ./api/
+      dockerfile: dev.Dockerfile
+    volumes:
+      - ./api/.:/api/
+    working_dir: /api
+    command: rails s -b 0.0.0.0
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgres://postgres@db
+      RAILS_LOG_TO_STDOUT: 'true'
+      #RAILS_MASTER_KEY: '0007cb304cd355de1bf7d820f2fe34cf'
+      #
+  front:
+    build:
+      context: ./front/
+      dockerfile: dev.Dockerfile
+    volumes:
+      - ./tmp/.:/tmp/
+      - ./front/.:/front/
+    working_dir: /front
+    command: ng serve --host 0.0.0.0 --aot
+    ports:
+      - 4200:4200
+    depends_on:
+      - api
+
+  db:
+    image: postgres:10.3-alpine
+    volumes:
+      - ./database:/var/lib/postgresql/data

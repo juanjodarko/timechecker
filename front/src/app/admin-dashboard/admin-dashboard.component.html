@@ -1,0 +1,69 @@
+ <div class="flex bg-gray-100 font-sans">
+
+<!-- Side bar-->
+
+    <div id="sidebar" class="h-screen w-16 menu bg-white text-white px-4 flex items-center nunito static fixed shadow">
+
+        <ul class="list-reset ">
+            <li class="my-2 md:my-0">
+                <a routerLink="/admin-dashboard" class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-indigo-400">
+                    <i class="fas fa-home fa-fw mr-3"></i><span class="w-full inline-block pb-1 md:pb-0 text-sm">Home</span>
+                </a>
+            </li>
+            <!--<li class="my-2 md:my-0">
+              <a class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-indigo-400">
+                <i class="fas fa-users fa-fw mr-3"></i><span class="w-full inline-block pb-1 md:pb-0 text-sm">Users</span>
+              </a>
+            </li>
+            <li class="my-2 md:my-0">
+                <a  class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-indigo-400">
+                    <i class="fas fa-chart-area fa-fw mr-3"></i><span class="w-full inline-block pb-1 md:pb-0 text-sm">Report</span>
+                </a>
+            </li>-->
+            <li class="my-2 md:my-0">
+                <a (click)="logout()" class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-indigo-400">
+                    <i class="fas fa-sign-out-alt fa-fw mr-3"></i><span class="w-full inline-block pb-1 md:pb-0 text-sm">Logout</span>
+                </a>
+            </li>
+        </ul>
+
+    </div>
+
+
+    <div class="flex flex-row flex-wrap flex-1 flex-grow content-start pl-16">
+      <div class="m-8">
+      <button class="m-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" [disabled]="userCantCheckIn()" (click)="checkin()">Check in</button>
+      <button class="m-2 bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded" [disabled]="userCantCheckOut()" (click)="checkout()">Check out</button>
+      <button class="m-2 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded" *ngIf="isAdmin()" (click)="report()">Report</button>
+
+      </div>
+    </div>
+
+     </div>
+  <div class="flex flex-row flex-wrap flex-1 flex-grow content-start pl-16" *ngIf="data">
+    <table class="table-auto">
+      <thead>
+        <tr>
+          <th class="px-4 py-2">USER</th>
+          <th class="px-4 py-2">CHECK-INS</th>
+          <th class="px-4 py-2">CHECK-OUTS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of data">
+          <td class="border px-4 py-2">{{ user.full_name }}</td>
+          <td class="border px-4 py-2">
+            <div *ngFor="let checkin of checkins(user.attendances)">
+              <small>{{ checkin.time }}</small><br>
+            </div>
+          </td>
+          <td class="border px-4 py-2">
+            <div *ngFor="let checkout of checkouts(user.attendances)">
+              <small>{{ checkout.time }}</small><br>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table> 
+
+     </div>
