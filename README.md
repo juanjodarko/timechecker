@@ -24,3 +24,11 @@ docker-compose up
 ```
 
 make sure you have ports :4200 and :3000 available since the api will run through :3000 and the frontend will run through :4200.
+
+## Troubleshooting
+
+if you get an error from the front app regarding the @angular-builders/custom-webpack run manually the npm installation with the following command
+
+```
+docker-compose run --rm front npm install
+```
