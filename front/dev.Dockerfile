@@ -1,4 +1,4 @@
-FROM node:10-alpine
+FROM node:12-alpine
 RUN mkdir /front
 WORKDIR /front
 ENV PATH /front/node_modules/.bin:$PATH
